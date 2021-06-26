@@ -1,0 +1,32 @@
+<div
+  class="chronometer">
+  <span>
+    {{hours > 9 ? hours : '0' + hours}} :
+  </span>
+  <span>
+    {{minutes > 9 ? minutes : '0' + minutes}} :
+  </span>
+  <span>
+    {{seconds > 9 ? seconds : '0' + seconds}} :
+  </span>
+  <span>
+    {{milliseconds ? milliseconds : '000'}}
+  </span>
+</div>
+<div class="clearfix btns">
+  <button 
+    (click)="stop()"
+    class="btn btn-sm btn-secondary">
+    Stop
+  </button>
+  <button 
+    (click)="reset()"
+    class="btn btn-sm btn-secondary">
+    Reset
+  </button>
+  <button 
+    (click)="start()"
+    class="btn btn-sm btn-primary">
+    Start
+  </button>
+</div>

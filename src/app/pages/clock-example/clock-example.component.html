@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">
+        Clock
+      </div>
+      <div class="card-body">
+        <p class="card-text">Traditional clock using the setInterval function</p>
+        <clock></clock>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">
+        Chronometer
+      </div>
+      <div class="card-body">
+        <p class="card-text">Traditional timer with start, stop and reset functions (onStatusChange: Event)</p>
+        <chronometer (onStatusChange)="chronometerStatus = $event"></chronometer>
+        <div 
+          *ngIf="chronometerStatus" 
+          class="alert alert-info mt-3 mb-0">
+          Chronometer Status: <b>{{chronometerStatus}}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">
+        Countdown
+      </div>
+      <div class="card-body">
+        <p class="card-text">Countdown seconds, Event (onReady)</p>
+        <countdown (onReady)="alert($event)"></countdown>
+      </div>
+    </div>
+  </div>
+</div>

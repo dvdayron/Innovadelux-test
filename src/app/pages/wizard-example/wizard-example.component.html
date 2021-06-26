@@ -1,0 +1,65 @@
+<div class="wizard">
+  <div class="card">
+    <div class="card-header">
+      <span class="badge" [ngClass]="{'badge-secondary': currentStep !== 1, 'badge-info': currentStep === 1}">1.Profile picture</span> 
+      <span *ngIf="currentStep > 1">&nbsp;&raquo; <span class="badge" [ngClass]="{'badge-secondary': currentStep !== 2, 'badge-info': currentStep === 2}">2.Profile info</span></span>
+      <span *ngIf="currentStep > 2">&nbsp;&raquo; <span class="badge" [ngClass]="{'badge-secondary': currentStep !== 3, 'badge-info': currentStep === 3}">3.Description</span></span>
+    </div>
+    <div class="card-body">
+      <div *ngIf="currentStep === 1" class="step">
+        <h4>Upload your profile photo</h4>
+        <div class="image-upload">
+          <img 
+            [ngClass]="{'default': !userInfo.image, 'photo': userInfo.image}" 
+            [src]="userInfo.image ? userInfo.image : 'assets/images/icon_photo_upload.png'"
+          />
+          <input type="file" (change)="imagePreview($event)"/>
+        </div>
+      </div>
+      <div *ngIf="currentStep === 2" class="step">
+        <h4>Complete your personal info</h4>
+        <div class="row">
+          <div class="col-6"> 
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input id="name" class="form-control" type="text" [(ngModel)]="userInfo.name"/>
+            </div>
+          </div>
+          <div class="col-6"> 
+            <div class="form-group">
+              <label for="lastName">Last name</label>
+              <input id="lastName" class="form-control" type="text" [(ngModel)]="userInfo.lastName"/>
+            </div>
+          </div>
+          <div class="col-6"> 
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input id="email" class="form-control" type="email" [(ngModel)]="userInfo.email"/>
+            </div>
+          </div>
+          <div class="col-6"> 
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input id="phone" class="form-control" type="text" [(ngModel)]="userInfo.phone"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="currentStep === 3" class="step">
+        <h4>About you</h4>
+        <div class="form-group">
+          <label for="about">CV description</label>
+          <textarea id="about" class="form-control" rows="6" type="text" [(ngModel)]="userInfo.about"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button (click)="back()" [ngClass]="{'no-show': currentStep <= 1}" class="btn btn-secondary">
+        Prev
+      </button>
+      <button [ngClass]="{'no-show': currentStep === 3 && !validate()}" [disabled]="!validate()" (click)="next()" class="btn btn-primary">
+        {{currentStep === 3 && validate() ? 'Send information' : 'Next'}}
+      </button>
+    </div>
+  </div>
+</div>

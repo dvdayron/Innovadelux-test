@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-6 offset-3">
+    <div class="card">
+      <div class="card-header">
+        Calendar component
+      </div>
+      <div class="card-body">
+        <p class="card-text">Simple Calendar, Event (selected)</p>
+        <my-calendar (selected)="selected = $event"></my-calendar>
+        <div *ngIf="selected" class="alert alert-info">
+          Selected date: <b>{{selected | date}}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

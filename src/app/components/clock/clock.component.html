@@ -1,0 +1,21 @@
+<div 
+  *ngIf="currentDateTime"
+  class="clock">
+  <span>
+    {{currentDateTime.getFullYear()}}
+  </span>
+  <span>
+    {{currentDateTime.getMonth() + 1}}
+  </span>
+  <span>
+    {{currentDateTime.getDate().toLocaleString()}}
+  </span>
+  &nbsp;
+  <span>
+    {{currentDateTime.getHours()}}
+    :
+    {{currentDateTime.getMinutes()}}
+    :
+    {{currentDateTime.getSeconds()}}
+  </span>
+</div>

@@ -1,0 +1,43 @@
+<div>
+  <div 
+    *ngIf="!onCountDown"
+    class="row">
+    <div class="col-8">
+      <div class="form-group">
+        <label for="seconds">
+          Seconds
+        </label>
+        <input 
+          id="seconds" 
+          class="form-control" 
+          type="number" 
+          min="0" 
+          [(ngModel)]="timeInSeconds"/>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <label>&nbsp;</label>
+        <button
+          class="btn btn-primary form-control" 
+          [disabled]="!timeInSeconds"
+          (click)="start()">
+          Start
+        </button>
+      </div>
+    </div>
+  </div>
+  <div 
+    *ngIf="hours || minutes || seconds"
+    class="countdown">
+    <span>
+      {{hours > 9 ? hours : '0' + hours}} :
+    </span>
+    <span>
+      {{minutes > 9 ? minutes : '0' + minutes}} :
+    </span>
+    <span>
+      {{seconds > 9 ? seconds : '0' + seconds}}
+    </span>
+  </div>
+</div>
